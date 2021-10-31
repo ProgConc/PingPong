@@ -25,7 +25,7 @@ public class Player implements Runnable {
 
 
 
-    private boolean mustPlay = false;
+    private volatile boolean mustPlay = false;
 
 
 
