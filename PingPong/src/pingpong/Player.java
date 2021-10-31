@@ -17,10 +17,6 @@ public class Player implements Runnable {
 
 
 
-    private int turns = Game.MAX_TURNS;
-
-
-
     private Player nextPlayer;
 
 
@@ -41,15 +37,13 @@ public class Player implements Runnable {
 
     public void run() {
 
-        while(!gameFinished()) {
+        while(!Thread.interrupted()) {
 
             while (!mustPlay);
 
 
 
             System.out.println(text);
-
-            turns--;
 
 
 
@@ -60,14 +54,6 @@ public class Player implements Runnable {
 
 
         }
-
-    }
-
-
-
-    private boolean gameFinished() {
-
-        return turns == 0;
 
     }
 
