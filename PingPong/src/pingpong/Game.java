@@ -13,10 +13,6 @@ public class Game {
 
 
 
-    public static final int MAX_TURNS = 10;
-
-
-
     public static void main(String[] args) {
 
 
@@ -50,6 +46,30 @@ public class Game {
         thread1.start();
 
 
+
+        //Let the players play!
+
+        try {
+
+            Thread.sleep(2);
+
+        } catch (InterruptedException e) {
+
+            e.printStackTrace();
+
+        }
+
+
+
+        //Tell the players to stop
+
+        thread1.interrupt();
+
+        thread2.interrupt();
+
+
+
+        //Wait until players finish
 
         try {
 
