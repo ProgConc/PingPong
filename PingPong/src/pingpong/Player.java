@@ -9,7 +9,7 @@ package pingpong;
  *
  * @author A
  */
-public class Player {
+public class Player implements Runnable {
 
 
 
@@ -25,6 +25,10 @@ public class Player {
 
 
 
+    private boolean mustPlay = false;
+
+
+
     public Player(String text) {
 
         this.text = text;
@@ -33,15 +37,27 @@ public class Player {
 
 
 
-    public void play() {
+    @Override
 
-        if (!gameFinished()) {
+    public void run() {
+
+        while(!gameFinished()) {
+
+            while (!mustPlay);
+
+
 
             System.out.println(text);
 
             turns--;
 
-            nextPlayer.play();
+
+
+            this.mustPlay = false;
+
+            nextPlayer.mustPlay = true;
+
+
 
         }
 
@@ -64,5 +80,11 @@ public class Player {
     }
 
 
+
+    public void setMustPlay(boolean mustPlay) {
+
+        this.mustPlay = mustPlay;
+
+    }
 
 }

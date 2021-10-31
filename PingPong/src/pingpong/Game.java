@@ -37,12 +37,24 @@ public class Game {
 
 
 
-        player1.play();
+        player1.setMustPlay(true);
+
+
+
+        Thread thread2 = new Thread(player2);
+
+        thread2.start();
+
+        Thread thread1 = new Thread(player1);
+
+        thread1.start();
 
 
 
         System.out.println("Game finished!");
 
     }
+
+
 
 }
