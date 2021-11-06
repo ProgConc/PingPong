@@ -30,34 +30,15 @@ public class Game {
         player1.setPlay(true);
         ExecutorService executor = Executors.newFixedThreadPool(2);
 
-
-
 executor.execute(player1);
-
 executor.execute(player2);
-
-
-
-sleep(2);
-
-
-
+sleep(1000);
 executor.shutdownNow();
-
-
-
 try {
-
-    executor.awaitTermination(5, TimeUnit.SECONDS);
-
+    executor.awaitTermination(10, TimeUnit.SECONDS);
 } catch (InterruptedException e) {
-
     System.out.println("Main thread interrupted while waiting for players to finish");
-
 }
-
-
-
 System.out.println("Game finished!");
     }
 
