@@ -7,6 +7,7 @@ package pingpong;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -28,12 +29,36 @@ public class Game {
 
         player1.setPlay(true);
         ExecutorService executor = Executors.newFixedThreadPool(2);
-        executor.execute(player1);
-        executor.execute(player2);
-        sleep(2);
-        executor.shutdownNow();
-        System.out.println("Game finished!");
 
+
+
+executor.execute(player1);
+
+executor.execute(player2);
+
+
+
+sleep(2);
+
+
+
+executor.shutdownNow();
+
+
+
+try {
+
+    executor.awaitTermination(5, TimeUnit.SECONDS);
+
+} catch (InterruptedException e) {
+
+    System.out.println("Main thread interrupted while waiting for players to finish");
+
+}
+
+
+
+System.out.println("Game finished!");
     }
 
     public static void sleep(long ms) {
